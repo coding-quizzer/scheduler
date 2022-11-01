@@ -45,7 +45,7 @@ storiesOf("Button", module)
     {
       id: 2,
       name: "Tuesday",
-      sports: 5,
+      spots: 5,
     },
     {
       id: 3,
