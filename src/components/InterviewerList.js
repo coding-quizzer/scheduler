@@ -15,7 +15,6 @@ const InterviewerList = (props) => {
           return (
             <InterviewerListItem
               key={id}
-              id={id}
               name={name}
               avatar={avatar}
               selected={interviewer===id}

@@ -7,7 +7,7 @@ const InterviewerListItem = (props) => {
   const { name, avatar, selected, setInterviewer } = props;
   const itemClass = classNames('interviewers__item', {'interviewers__item--selected': selected})
   return (
-    <li className={itemClass} onClick={() => setInterviewer(name)}>
+    <li className={itemClass} onClick={setInterviewer}>
       <img
         className="interviewers__item-image"
         src={avatar}
