@@ -7,9 +7,11 @@
   ```javascript
   - DayListItem: {
     props: {
+      key: integer,
       name: string,
       spots: integer,
       selected: bool,
+      setDay: Function,
     }
 
     state: {}
