@@ -41,3 +41,5 @@
   - Props: id(num), name(str), avatar(url), selected(bool), setInterviewer(func)
 
 ### InterviewerList
+  - State: 
+  - Props: interviewers (array of objects with id, name, and avatar keys), setInterviewer(func), interviewer(num)
