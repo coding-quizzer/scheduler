@@ -37,7 +37,7 @@
   - Used By: Application
 
 ### InterviewerListItem
+  - State:
+  - Props: id(num), name(str), avatar(url), selected(bool), setInterviewer(func)
 
 ### InterviewerList
-  - State: Selected
-  - Props
