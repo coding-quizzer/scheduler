@@ -38,7 +38,7 @@
 
 ### InterviewerListItem
   - State:
-  - Props: id(num), name(str), avatar(url), selected(bool), setInterviewer(func)
+  - Props: name(str), avatar(url), selected(bool), setInterviewer(func)
 
 ### InterviewerList
   - State: 
