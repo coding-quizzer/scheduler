@@ -1,6 +1,8 @@
 import React from "react";
 import InterviewerListItem from "./InterviewerListItem";
 
+import "components/InterviewerList.scss"
+
 const InterviewerList = (props) => {
   return (
     <section className="interviewers">
