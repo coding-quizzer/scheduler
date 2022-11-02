@@ -1,5 +1,7 @@
 import React from "react";
 
+import 'components/InterviewerListItem.scss';
+
 const InterviewerListItem = () => {
   return (
     <li className="interviewers__item">
