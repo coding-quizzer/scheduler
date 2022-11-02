@@ -1,35 +1,25 @@
 # Component Structure
-## Connections
- - DayList/DayListItem
+## Components List
+  - Button
+  - DayList
+  - DayListItem
 
- ## Components
+### Application
+ - State: day
+ - Props: NONE
+ - Used By: NO ONE
+
+### Button
+  - State: NO STATE
+  - Props: confirm(boolean), danger, onClick(func), disabled(bool)
+  - Used by: EVERYONE
   
-  ```javascript
-  - DayListItem: {
-    props: {
-      key: integer,
-      name: string,
-      spots: integer,
-      selected: bool,
-      setDay: Function,
-    }
-
-    state: {}
-  }
-
-  - DayList: {
-    props: {
-      days: [
-        {
-          id: integer,
-          name: string,
-          spots: integer
-        }
-      ]
-      day: string,
-      setDay: Function,
-    },
-
-    state: {}
-  }
-  ```
+### DayListItem
+ - State:
+ - Props: key(int), name(string), spots(int), selected(bool), setDay(func) 
+ - Used By: DayList
+ 
+### DayList
+  - State:
+  - Props: days (array of objects with id, name, and spots keys), day(str), setDay(func)
+  - Used By: Application
