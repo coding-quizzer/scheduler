@@ -6,8 +6,9 @@ import Button from "components/Button";
 
 
 const Form = (props) => {
-
-  const {student, interviewers, interviewer,  onSave, onCancel} = props
+  const {student: existingStudent, interviewers, interviewer: existingInterviewer,  onSave, onCancel} = props
+  const [student, setStudent] = useState(existingStudent || "");
+  const [interviewer, setInterviewer] = useState(existingInterviewer || 0);
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -17,6 +18,8 @@ const Form = (props) => {
             name="name"
             type="text"
             placeholder="Enter Student Name"
+            value={student}
+            onChange={(event) => setStudent(event.target.value)}
             /*
             This must be a controlled component
             your code goes here
@@ -26,7 +29,8 @@ const Form = (props) => {
         </form>
         <InterviewerList
           interviewers={interviewers}
-          interviewer={1}
+          value={interviewer}
+          onChange={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
