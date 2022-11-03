@@ -45,3 +45,5 @@ const Form = (props) => {
     </main>
   )
 }
+
+export default Form
