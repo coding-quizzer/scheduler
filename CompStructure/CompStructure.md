@@ -39,7 +39,19 @@
 ### InterviewerListItem
   - State:
   - Props: name(str), avatar(url), selected(bool), setInterviewer(func)
+  - Used By: InterviewerList
 
 ### InterviewerList
   - State: 
   - Props: interviewers (array of objects with id, name, and avatar keys), setInterviewer(func), interviewer(num)
+  - Used By: Application
+
+### Appointment/Header
+  - State: NO STATE
+  - Props: time(str)
+  - Used By: Appointment
+
+### Appointment/Empty
+ - State: NO STATE
+ - Props: onAdd(func)
+ - Used By: Appointment
