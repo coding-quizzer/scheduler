@@ -44,14 +44,34 @@
 ### InterviewerList
   - State: 
   - Props: interviewers (array of objects with id, name, and avatar keys), setInterviewer(func), interviewer(num)
-  - Used By: Application
+  - Used By: Form
 
 ### Appointment/Header
-  - State: NO STATE
-  - Props: time(str)
+  - State: NO STATE,
+  - Props: time(str),
   - Used By: Appointment
 
 ### Appointment/Empty
- - State: NO STATE
- - Props: onAdd(func)
+ - State: NO STATE,
+ - Props: onAdd(func),
+ - Used By: Appointment
+
+### Appointment/Show
+  - State: NO STATE,
+  - Props: student(str), interviewer(object with id, name, and avatar keys), onEdit(func), onDelete(func)
+  - Used By: Appointment
+
+### Appointment/Confirm
+ - State: NO STATE,
+ - Props: message(str), onConfirm(func), onCancel(func),
+ - Used By: Appointment
+
+### Appointment/Status
+ - State: NO STATE,
+ - Props: message(str),
+ - Used By: Appointment
+
+### Appointment/Error
+ - State: NO STATE,
+ - Props: message(str), onClose(func)
  - Used By: Appointment
