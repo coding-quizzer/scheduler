@@ -8,7 +8,7 @@ import Button from "components/Button";
 const Form = (props) => {
   const {student: existingStudent, interviewers, interviewer: existingInterviewer,  onSave, onCancel} = props
   const [student, setStudent] = useState(existingStudent || "");
-  const [interviewer, setInterviewer] = useState(existingInterviewer || 0);
+  const [interviewer, setInterviewer] = useState(existingInterviewer || null);
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
