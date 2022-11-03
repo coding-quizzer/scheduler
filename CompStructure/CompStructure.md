@@ -33,7 +33,7 @@
  
 ### DayList
   - State:
-  - Props: days (array of objects with id, name, and spots keys), day(str), setDay(func)
+  - Props: days (array of objects with id, name, and spots keys), value(str), onChange(func)
   - Used By: Application
 
 ### InterviewerListItem
@@ -43,7 +43,7 @@
 
 ### InterviewerList
   - State: 
-  - Props: interviewers (array of objects with id, name, and avatar keys), setInterviewer(func), interviewer(num)
+  - Props: interviewers (array of objects with id, name, and avatar keys), onChange(func), value(num)
   - Used By: Form
 
 ### Appointment/Header
