@@ -5,8 +5,15 @@ import Empty from "./Empty";
 import './styles.scss'
 
 const Appointment = (props) => {
+  const { id, time, interview } = props
+  const renderedComponent = interview 
+    ? <Show student={interview.student} interviewer={interview.interviewer}/>
+    : <Empty />;
   return (
-    <article className="appointment"></article>
+    <article className="appointment">
+      <Header time={time} />
+      {renderedComponent}
+    </article>
   )
 }
 
