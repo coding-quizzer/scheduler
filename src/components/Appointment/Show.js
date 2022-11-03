@@ -1,7 +1,9 @@
 import React from "react";
 
 const Show = (props) => {
-  <main className="appointment__card appointment__card--show">
+  return (
+
+    <main className="appointment__card appointment__card--show">
     <section className="appointment__card-left">
       <h2 className="text--regular">Lydia Miller-Jones</h2>
       <section className="interviewer">
@@ -15,15 +17,16 @@ const Show = (props) => {
           className="appointment__actions-button"
           src="images/edit.png"
           alt="Edit"
-        />
+          />
         <img
           className="appointment__actions-button"
           src="images/trash.png"
           alt="Delete"
-        />
+          />
       </section>
     </section>
   </main>
+)
 }
 
 export default Show;
