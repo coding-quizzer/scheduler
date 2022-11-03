@@ -46,6 +46,10 @@
   - Props: interviewers (array of objects with id, name, and avatar keys), onChange(func), value(num)
   - Used By: Form
 
+### Appointment
+  - State: NO STATE
+  - Props: id(num), time(str), interview(object with student and interviewer keys)
+
 ### Appointment/Header
   - State: NO STATE
   - Props: time(str)
