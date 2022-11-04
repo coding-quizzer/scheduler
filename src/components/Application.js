@@ -6,8 +6,16 @@ import "components/Application.scss";
 
 
 export default function Application(props) {
-  const [day, setDay] = useState('Monday');
-  const [days, setDays] = useState([]);
+  const defaultState = {
+    day: 'Monday',
+    days: [],
+    appointments: []
+  }
+  const [state, setState] = useState(defaultState);
+
+  const setDay = (day) => setState({...state, day});
+  const setDays = (days) => setState({...state, days});
+  const setAppointments = (appointments) => setState({...state, appointments});
 
   useEffect(() => {
     axios.get('/api/days')
@@ -73,8 +81,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days}
-            value={day}
+            days={state.days}
+            value={state.day}
             onChange={setDay}
           />
         </nav>
