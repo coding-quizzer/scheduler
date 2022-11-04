@@ -13,23 +13,16 @@ const Appointment = (props) => {
   const { id, time, interview } = props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
   
-  let renderedComponent;
-  
-  if (mode === SHOW) {
-    renderedComponent = (
-      <Show
-        student={interview.student}
-        interviewer={interview.interviewer}
-      />);
-  }
-
-  if (mode === EMPTY) {
-    renderedComponent = <Empty />;
-  }
     return (
       <article className="appointment">
       <Header time={time} />
-      {renderedComponent}
+      {mode === EMPTY && <Empty onAdd={() => console.log("Clicked onAdd")}/>}
+      {mode === SHOW && (
+        <Show
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+        />
+      )}
     </article>
   )
 }
