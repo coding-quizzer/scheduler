@@ -82,4 +82,5 @@
 
 ### Appointment/Form
   - State: student, interviewer
-  - Props: student(str), interviewers(arr), interviewer(num) onSave(func) onCancel(func)
+  - Props (create): interviewers(arr), onSave(func), onCancel(func)
+  - Props (edit): student(str), interviewers(arr), interviewer(num) onSave(func) onCancel(func)
