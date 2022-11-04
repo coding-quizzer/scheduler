@@ -16,12 +16,16 @@ export default function Application(props) {
   const [state, setState] = useState(defaultState);
 
   const setDay = (day) => setState({...state, day});
-  const setDays = (days) => setState(prev => ({...prev, days}));
-  const setAppointments = (appointments) => setState({...state, appointments});
 
   useEffect(() => {
-    axios.get('/api/days')
-      .then((response) => setDays(response.data))
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments')
+    ])
+    .then(all => {
+      console.log(all[0].data);
+      console.log(all[1].data)
+    });
   }, [])
 
   const appointmentBody = dailyAppointments.map(appointment => (
