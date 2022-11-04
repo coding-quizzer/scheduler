@@ -8,6 +8,20 @@ export function getAppointmentsForDay(state, day) {
 }
 
 const state = {
+  days: [
+    {
+      id: 1,
+      name: "Monday",
+      appointments: [1, 2, 3],
+      interviewers: [1, 2]
+    },
+    {
+      id: 2,
+      name: "Tuesday",
+      appointments: [4, 5],
+      interviewers: [2]
+    }
+  ],
   appointments: {
     "1": { id: 1, time: "12pm", interview: null },
     "2": { id: 2, time: "1pm", interview: null},
@@ -47,3 +61,12 @@ export function getInterview(state, interview) {
   
   return {...interview, interviewer};
 };
+
+export function getInterviewersForDay(state, day) {
+  const dayObj = state.days.find(element => element.name === day)
+
+  // If dayObj exists return dayObj.appointmentws, else return an empty arrayw
+  const dayInterviewerIDs = (dayObj && dayObj.interviewers) || [];
+  const dayInterviewers = dayInterviewerIDs.map(id => state.interviewers[id]);
+  return dayInterviewers;
+}
