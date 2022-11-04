@@ -14,7 +14,7 @@ export default function Application(props) {
   const [state, setState] = useState(defaultState);
 
   const setDay = (day) => setState({...state, day});
-  const setDays = (days) => setState({...state, days});
+  const setDays = (days) => setState(prev => ({...prev, days}));
   const setAppointments = (appointments) => setState({...state, appointments});
 
   useEffect(() => {
