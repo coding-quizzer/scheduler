@@ -23,8 +23,7 @@ export default function Application(props) {
       axios.get('/api/appointments')
     ])
     .then(all => {
-      console.log(all[0].data);
-      console.log(all[1].data)
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data}));
     });
   }, [])
 
