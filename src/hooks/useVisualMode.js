@@ -11,8 +11,13 @@ export default function useVisualMode(initMode) {
 
 
   const back = () => {
-    const newHistory = history.slice(0, -1);
-    console.log(history)
+
+    const newHistory = [...history]
+
+    if(history.length > 1) {
+      newHistory.pop();
+    }
+    console.log(history);
     setHistory(newHistory);
 
   };
