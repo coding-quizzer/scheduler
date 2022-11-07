@@ -9,21 +9,35 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 
 
 export default function Application(props) {
-  const bookInterview = (id, interview) => {
-    console.log(id, interview);
-  };
-
+  
   const defaultState = {
     day: 'Monday',
     days: [],
     appointments: {}
   }
-
+  
   // const dailyAppointments = [];
   const [state, setState] = useState(defaultState);
-
+  
   const setDay = (day) => setState({...state, day});
+  
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview}
+    };
 
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+
+    setState(prev => ({
+      ...prev, 
+      appointments
+    }));
+    console.log(appointment);
+  };
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -34,6 +48,7 @@ export default function Application(props) {
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     });
   }, []);
+  
 
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
