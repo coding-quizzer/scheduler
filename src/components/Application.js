@@ -26,17 +26,26 @@ export default function Application(props) {
       ...state.appointments[id],
       interview: { ...interview}
     };
-
+    
+    console.log(state);
     const appointments = {
       ...state.appointments,
       [id]: appointment
     }
+    return axios({
+      method: 'put',
+      url: `/api/appointments/${id}`,
+      data: {interview}
+    })
+    .then(response => {
+      setState(prev => ({
+        ...prev, 
+        appointments
+      }));
+    });
 
-    setState(prev => ({
-      ...prev, 
-      appointments
-    }));
-    console.log(appointment);
+  
+    
   };
   useEffect(() => {
     Promise.all([
@@ -55,6 +64,8 @@ export default function Application(props) {
 
   const schedule = appointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
+    console.log('State', state);
+    console.log('Interview', getInterview(state, appointment.interview));
     return (
       <Appointment
         key={appointment.id}
