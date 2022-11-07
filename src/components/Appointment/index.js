@@ -53,7 +53,7 @@ const Appointment = (props) => {
       {mode === CREATE && <Form interviewers={interviewers} onCancel={() => back()} onSave={save}/>}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
-      {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" />}
+      {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={() => back()} />}
     </article>
   )
 }
