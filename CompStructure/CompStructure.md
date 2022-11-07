@@ -47,7 +47,7 @@
   - Used By: Form
 
 ### Appointment
-  - State: NO STATE
+  - State: mode
   - Props: id(num), time(str), interview(object with student and interviewer keys), bookAppointment(func)
 
 ### Appointment/Header
