@@ -16,7 +16,6 @@ export default function Application(props) {
     appointments: {}
   }
   
-  // const dailyAppointments = [];
   const [state, setState] = useState(defaultState);
   
   const setDay = (day) => setState({...state, day});
@@ -27,7 +26,6 @@ export default function Application(props) {
       interview: { ...interview}
     };
     
-    console.log(state);
     const appointments = {
       ...state.appointments,
       [id]: appointment
@@ -37,7 +35,7 @@ export default function Application(props) {
       url: `/api/appointments/${id}`,
       data: {interview}
     })
-    .then(response => {
+    .then(() => {
       setState(prev => ({
         ...prev, 
         appointments
