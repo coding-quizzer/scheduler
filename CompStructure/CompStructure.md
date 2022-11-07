@@ -48,7 +48,7 @@
 
 ### Appointment
   - State: NO STATE
-  - Props: id(num), time(str), interview(object with student and interviewer keys)
+  - Props: id(num), time(str), interview(object with student and interviewer keys), bookAppointment(func)
 
 ### Appointment/Header
   - State: NO STATE
