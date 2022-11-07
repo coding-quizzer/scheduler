@@ -8,7 +8,7 @@ import Button from "components/Button";
 const Form = (props) => {
   const {interviewers,  onSave, onCancel} = props
   const [student, setStudent] = useState(props.student || "");
-  const [interviewer, setInterviewer] = useState(props.student || null);
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const reset = () => {
     setInterviewer(null);
     setStudent ("");
@@ -28,11 +28,6 @@ const Form = (props) => {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => setStudent(event.target.value)}
-            /*
-            This must be a controlled component
-            your code goes here
-            
-            */
           />
         </form>
         <InterviewerList
