@@ -9,6 +9,10 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 
 
 export default function Application(props) {
+  const bookInterview = (id, interview) => {
+    console.log(id, interview);
+  };
+
   const defaultState = {
     day: 'Monday',
     days: [],
@@ -43,6 +47,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     )
 })
