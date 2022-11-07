@@ -13,6 +13,7 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const DELETING = "DELETING"
 const Appointment = (props) => {
 
   
@@ -24,10 +25,17 @@ const Appointment = (props) => {
       student: name,
       interviewer
     };
+
     transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => transition('SHOW'));
   };
+
+  const cancel = () => {
+    transition('DELETING')
+    props.cancelInterview(props.id)
+    .then(() => transition('EMPTY'))
+  }
   
     return (
       <article className="appointment">
@@ -37,10 +45,12 @@ const Appointment = (props) => {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={cancel}
         />
         )}
       {mode === CREATE && <Form interviewers={interviewers} onCancel={() => back()} onSave={save}/>}
       {mode === SAVING && <Status message={"Saving"} />}
+      {mode === DELETING && <Status message={"Deleting"} />}
     </article>
   )
 }
