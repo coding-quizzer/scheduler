@@ -56,7 +56,7 @@ const Appointment = (props) => {
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={() => back()} />}
-      {mode === EDIT && <Form student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id} onCancel={() => back()} />}
+      {mode === EDIT && <Form student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id} onCancel={() => back()} onSave={save}/>}
     </article>
   )
 }
