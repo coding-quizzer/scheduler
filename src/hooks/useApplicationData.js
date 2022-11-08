@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getDayObj } from "helpers/selectors";
 export default function useApplicationData() {
   const defaultState = {
     day: 'Monday',
@@ -8,7 +9,16 @@ export default function useApplicationData() {
   }
   const [state, setState] = useState(defaultState)
 
-  const setDay = (day) => setState({...state, day});
+  const updateDaySpots = (state, setState, getDayObj, callback) => {
+    const newDay = {...getDayObj(state, state.day)};
+    newDay.spots = callback(newDay.spots);
+    const days = [...state.days];
+    days[newDay.id - 1] = newDay;
+    setState(prev => ({...prev, days}));
+  }
+
+  const setDay = (day) => setState(prev => ({...prev, day}));
+
 
   const bookInterview = (id, interview) => {
     const appointment = {
@@ -28,7 +38,10 @@ export default function useApplicationData() {
       setState(prev => ({
         ...prev, 
         appointments
-      }));
+      }))
+    })
+    .then(() => {
+     updateDaySpots(state, setState, getDayObj, (spots) => spots-1)
     });
   };
 
@@ -47,6 +60,9 @@ export default function useApplicationData() {
         ...prev,
         appointments
       }))
+    })
+    .then(() => {
+     updateDaySpots(state, setState, getDayObj, (spots) => spots + 1)
     });
   };
 

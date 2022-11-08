@@ -35,7 +35,7 @@ const Appointment = (props) => {
     transition('SAVING');
     props.bookInterview(props.id, interview)
     .then(() => transition('SHOW'))
-    .catch(() => transition('ERROR_SAVE', true));
+    .catch((error) => {console.error(error.stack); transition('ERROR_SAVE', true)});
   };
 
   const cancel = () => {
