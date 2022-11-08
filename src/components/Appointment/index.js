@@ -17,6 +17,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 const Appointment = (props) => {
 
   
@@ -57,6 +59,8 @@ const Appointment = (props) => {
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={() => back()} />}
       {mode === EDIT && <Form student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id} onCancel={() => back()} onSave={save}/>}
+      {mode === ERROR_SAVE && <Error message={"Could not save appointment"} />}
+      {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} />}
     </article>
   )
 }
