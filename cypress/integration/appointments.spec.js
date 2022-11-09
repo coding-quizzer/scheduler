@@ -1,10 +1,13 @@
+beforeEach(() => {
+  // reset database
+  cy.request('GET', '/api/debug/reset');
 
+  // 1. Visits the root of our web server
+  cy.visit('/')
+    .contains('Monday');
+})
 describe('Appointments', () => {
   it('should book an interview', () => {
-    cy.request('GET', '/api/debug/reset');
-    // 1. Visits the root of our web server
-    cy.visit('/')
-    .contains('Monday');
 
     // 2. Clicks on the "Add" button in the second appointment
     cy.get("[alt=Add]")
