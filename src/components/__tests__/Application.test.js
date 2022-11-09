@@ -2,9 +2,10 @@ import React from "react";
 
 import axios from "axios";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByRole, getByPlaceholderText, queryByText, getByAltText, getByDisplayValue } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByRole, getByPlaceholderText, queryByText, getByAltText, getByDisplayValue, getByTestId } from "@testing-library/react";
 
 import Application from "components/Application";
+import Confirm from "components/Appointment/Confirm";
 
 afterEach(cleanup);
 
@@ -127,10 +128,29 @@ describe("Application", () => {
     // 6. Wait until error appears
     await waitForElement(() => getByText(appointment, 'Error'));
     expect(getByText(appointment,  /Could not Save Appointment/i));
-    console.log(prettyDOM(appointment));
+    fireEvent.click(getByAltText(appointment, 'Close'));
+    expect(() => getByAltText('Add'));
 
   })
 
-  it("shows the delete error when failing to delete an appointment", () => {})
+  it("shows the delete error when failing to delete an appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
+    // 1. Render the Application
+    const { container } = render(<Application />);
+    
+    // 2. Wait until the text "Archie Cohen is displayed"
+    await waitForElement(() => getByText(container, 'Archie Cohen'));
+    const appointment = getAllByTestId(container, 'appointment').find(appoint => queryByText(appoint, 'Archie Cohen'));
+
+    // 3. Click on the delete icon for the booked appointment and confirm
+    fireEvent.click(getByAltText(appointment, 'Delete'));
+    fireEvent.click(getByText(appointment, 'Confirm'));
+
+    // 4. Wait until Error is rendered
+    await waitForElement(() => getByText(appointment, 'Error'));
+    fireEvent.click(getByAltText(appointment, 'Close'));
+    expect(() => getByText(appointment, 'Edit'))
+
+  })
 });
 
