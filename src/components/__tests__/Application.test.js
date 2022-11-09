@@ -22,14 +22,11 @@ describe("Application", () => {
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
     const appointment = getAllByTestId(container, 'appointment')[0];
-    const addButton = getByRole(appointment, 'img', { alt:/Add/i})
-    fireEvent.click(addButton);
-    const studentForm = getByPlaceholderText(appointment, /Enter Student Name/i)
-    fireEvent.change(studentForm, {target: {value: 'Lydia Miller-Jones'}})
-    const interviewer = getAllByTestId(appointment, 'interviewer-item')[0];
-    fireEvent.click(interviewer);
-    const saveButton = getByText(appointment, /Save/i);
-    fireEvent.click(saveButton);
+
+    fireEvent.click(getByRole(appointment, 'img', { alt:/Add/i}));
+    fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {target: {value: 'Lydia Miller-Jones'}})
+    fireEvent.click(getAllByTestId(appointment, 'interviewer-item')[0]);
+    fireEvent.click(getByText(appointment, /Save/i));
     console.log(prettyDOM(appointment));
   });
 });
