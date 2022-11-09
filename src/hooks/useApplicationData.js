@@ -29,6 +29,24 @@ export default function useApplicationData() {
     return days;
   }
 
+  const updateState = (setState, id, interview) => {
+    
+    setState(prev => {
+      const appointment = {
+        ...state.appointments[id],
+        interview: interview ? { ...interview } : null
+      };
+      const appointments = {
+        ...prev.appointments,
+        [id]: appointment
+      };
+      const newState = {...prev, appointments};
+      const days = updateDaySpots(newState, getDayObj);
+      return {...newState, days}
+    })
+
+  }
+
 
   const setDay = (day) => setState(prev => ({...prev, day}));
 
@@ -41,21 +59,7 @@ export default function useApplicationData() {
       data: {interview}
     })
     .then(() => {
-     
-      
-      setState(prev => {
-        const appointment = {
-          ...state.appointments[id],
-          interview: { ...interview}
-        };
-        const appointments = {
-          ...prev.appointments,
-          [id]: appointment
-        };
-        const newState = {...prev, appointments};
-        const days = updateDaySpots(newState, getDayObj);
-        return {...newState, days}
-      })
+      updateState(setState, id, interview);
     })
   };
 
@@ -63,21 +67,7 @@ export default function useApplicationData() {
     
     return axios.delete(`/api/appointments/${id}`)
     .then(() => {
-      
-      
-      setState(prev => {
-        const appointment = {
-          ...prev.appointments[id],
-          interview: null
-        }
-        const appointments = {
-          ...prev.appointments,
-          [id]: appointment
-        }
-        const newState = {...prev, appointments}
-        const days = updateDaySpots(newState, getDayObj);
-        return ({...newState, days});
-      })
+      updateState(setState, id, null);
     })
   };
 
