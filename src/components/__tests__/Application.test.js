@@ -1,5 +1,7 @@
 import React from "react";
 
+import axios from "axios";
+
 import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByRole, getByPlaceholderText, queryByText, getByAltText, getByDisplayValue } from "@testing-library/react";
 
 import Application from "components/Application";
@@ -74,7 +76,7 @@ describe("Application", () => {
 
   it("loads data, edits an interview and keeps the spots remaining for monday the same", async () => {
     // 1. Render the Application
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -100,12 +102,34 @@ describe("Application", () => {
     // 8. Check that the DayListItem Monday has the text "1 day remaining"
     const monday = getAllByTestId(container, 'day').find(day => getByText(day, 'Monday'));
     expect(getByText(monday, '1 spot remaining'));
+  });
 
-    debug();
+  it("shows the save error when failing to save an appointment", async () => {
+    axios.put.mockRejectedValueOnce();
+    // 1. Render the Application
+    const { container } = render(<Application />);
+
+    // 2. Wait until the text "Archie Cohen" is displayed
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointment = getAllByTestId(container, 'appointment')[0];
+
+    // 3. Click the new appointment button for the first appointment
+    fireEvent.click(getByAltText(appointment, "Add"));
+    
+    
+    // 4. Use Reddy Fox as the student name and Tori Malcom as the interviewer
+    fireEvent.change(getByPlaceholderText(appointment, "Enter Student Name"), { target: { value: 'Reddy Fox'} });
+    fireEvent.click(getByAltText(appointment, 'Tori Malcolm'));
+
+    // 5. Click the Save button
+    fireEvent.click(getByText(appointment, "Save"));
+
+    // 6. Wait until error appears
+    await waitForElement(() => getByText(appointment, 'Error'));
+    expect(getByText(appointment,  /Could not Save Appointment/i));
+    console.log(prettyDOM(appointment));
 
   })
-
-  it("shows the save error when failing to save an appointment", () => {})
 
   it("shows the delete error when failing to delete an appointment", () => {})
 });
