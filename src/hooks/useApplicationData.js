@@ -53,11 +53,7 @@ export default function useApplicationData() {
 
   const bookInterview = (id, interview) => {
     
-    return axios({
-      method: 'put',
-      url: `/api/appointments/${id}`,
-      data: {interview}
-    })
+    return axios.put( `/api/appointments/${id}`, { interview })
     .then(() => {
       updateState(setState, id, interview);
     })
