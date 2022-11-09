@@ -26,13 +26,15 @@ const Form = (props) => {
 
   const validate = (name, interviewer) => {
     if (name === "") {
-      setError("Student name cannot be blank")
+      setError("Student name cannot be blank");
       return;
     }
     if (interviewer === null) {
-      setError("Please select an interviewer")
+      setError("Please select an interviewer");
       return;
     }
+
+    setError("");
 
     props.onSave(name, interviewer);
   }
