@@ -39,10 +39,16 @@ describe('Appointments', () => {
 
   it('should cancel an interview', () => {
 
-    // 2. Clicks the delete button for the existing appointment
+    cy.contains('.appointment__card--show', 'Archie Cohen')
+      .get("[alt='Delete")
+      .click({ force: true});
+    
+      cy.contains('Confirm').click();
+    cy.contains('Deleting');
 
-    // 3. Clicks the appointment button
+    cy.contains('Deleting').should('not.exist');
 
-    // 4. Sees that the appointment slot is empty
+    cy.contains('.appointment__card--show', 'Archie Cohen').should('not.exist');
+
   })
 });
