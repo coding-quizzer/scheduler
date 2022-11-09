@@ -13,7 +13,6 @@ export default function useApplicationData() {
 
   const getSpotsForDay = (state, day) => {
     const appointments = (getAppointmentsForDay(state, day));
-    console.log(appointments);
     return getAppointmentsForDay(state, day)
     .reduce(((counter, nextAppointment) => (
       nextAppointment.interview ? (counter): (counter + 1)

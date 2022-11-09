@@ -24,10 +24,18 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, 'appointment')[0];
 
     fireEvent.click(getByRole(appointment, 'img', { alt:/Add/i}));
+
     fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {target: {value: 'Lydia Miller-Jones'}})
     fireEvent.click(getAllByTestId(appointment, 'interviewer-item')[0]);
     fireEvent.click(getByText(appointment, /Save/i));
-    console.log(prettyDOM(appointment));
+    
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    
+    await waitForElement(() => getByText(appointment, 'Lydia Miller-Jones'));
+    
+    const monday = getAllByTestId(container, 'day').find(day => getByText(day, 'Monday'));
+    
+    expect(getByText(monday, /No spots remaining/i))
   });
 });
 
