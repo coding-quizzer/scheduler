@@ -32,15 +32,26 @@ describe('Appointments', () => {
   });
 
   it('should edit an interview', () => {
-    // 1. Visits the root of our web server
 
     // 2. Clicks the edit button for the existing appointment
+    cy.contains('.appointment__card--show', 'Archie Cohen')
+    .get("[alt='Edit']")
+    .click({ force: true });
 
     // 3. Changes the name and interviewer
+    cy.get("[value='Archie Cohen']")
+      .clear()
+      .type('Lydia Miller-Jones');
+
+    cy.get("[alt='Tori Malcolm'")
+    .click();
 
     // 4. Clicks the save button
+    cy.contains('Save')
+      .click();
 
     // 5. Sees the edit to the appointment
+    cy.contains('.appointment__card--show', 'Tori Malcolm', 'Lydia Miller-Jones')
   });
 
   it('should cancel an interview', () => {
