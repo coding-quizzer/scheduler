@@ -15,6 +15,7 @@ const Form = (props) => {
     setStudent ("");
   }
   const cancel = () => {
+    setError("");
     reset();
     onCancel();
   }
