@@ -81,6 +81,6 @@
  - Used By: Appointment
 
 ### Appointment/Form
-  - State: student, interviewer
+  - State: student, interviewer, error
   - Props (create): interviewers(arr), onSave(func), onCancel(func)
   - Props (edit): student(str), interviewers(arr), interviewer(num) onSave(func) onCancel(func)
