@@ -43,7 +43,7 @@ const Appointment = (props) => {
     props.cancelInterview(props.id)
     .then(() => transition('EMPTY'))
     .catch(() => transition('ERROR_DELETE', true));
-  }
+  };
   
     return (
       <article className="appointment" data-testid="appointment">
@@ -65,7 +65,7 @@ const Appointment = (props) => {
       {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={() => back()}/>}
       {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={() => back()} />}
     </article>
-  )
-}
+  );
+};
 
 export default Appointment;
