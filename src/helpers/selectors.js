@@ -9,7 +9,7 @@ export function getAppointmentsForDay(state, day) {
   const dayAppointmentIDs = (dayObj && dayObj.appointments) || [];
   const dayAppointments = dayAppointmentIDs.map(id => state.appointments[id]);
   return dayAppointments;
-}
+};
 
 export function getInterview(state, interview) {
  
@@ -28,4 +28,11 @@ export function getInterviewersForDay(state, day) {
   const dayInterviewerIDs = (dayObj && dayObj.interviewers) || [];
   const dayInterviewers = dayInterviewerIDs.map(id => state.interviewers[id]);
   return dayInterviewers;
-}
+};
+
+export function getSpotsForDay(state, day) {
+  return getAppointmentsForDay(state, day)
+  .reduce(((counter, nextAppointment) => (
+    nextAppointment.interview ? (counter): (counter + 1)
+    )), 0);
+};
