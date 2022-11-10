@@ -11,3 +11,7 @@ Install dependencies with `npm install`.
 Run npm install with the server running to start the app. The app will open automatically in your browser.
 
 ## Screenshots
+
+!["Screenshot of appointment list"](https://github.com/coding-quizzer/scheduler/blob/main/docs/add_appointment.png?raw=true)
+!["Screenshot of appointment form"](https://github.com/coding-quizzer/scheduler/blob/main/docs/add_appointment.png?raw=true)
+!["Screenshot of saving indicator"](https://github.com/coding-quizzer/scheduler/blob/main/docs/saving_appointment.png?raw=true)
