@@ -6,17 +6,17 @@ Interview Scheduler is a RESTful client-side web application that allows users t
 
 Install dependencies with `npm install`.
 
-## Starting the app
-Fork and clone scheduler API from https://github.com/lighthouse-labs/scheduler-api. Follow the instructions in the README to set up the database and npm start to start the server in normal mode. (npm test error for error mode)
+Fork and clone scheduler API from https://github.com/lighthouse-labs/scheduler-api. Follow the instructions in the README to set up the database 
 
-Run npm install with the server running to start the app. The app will open automatically in your browser.
+## Starting the app
+Start up scheduler-api using npm start to start the server in normal mode. (Run npm run error to start the server in error mode)
+
+Run npm start with the server running to start the app. The app will open automatically in your browser.
 
 ## Testing
 Run npm test to run jest tests.
 
 Run npm run storybook to open the storybook. 
-
-Run npm run cypress to open cypress.
 
 
 ## Screenshots
