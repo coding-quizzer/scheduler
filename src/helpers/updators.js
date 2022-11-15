@@ -24,7 +24,7 @@ const updateDaySpots = (state) => {
 };
 
 /**
- * Get the updated spots object after
+ * Get the updated state object after
  * an appointment is added, edited or deleted
  * @param {{
  *  days,
