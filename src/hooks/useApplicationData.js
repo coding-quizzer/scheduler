@@ -16,7 +16,7 @@ export default function useApplicationData() {
 
   const bookInterview = (id, interview) => {
     return axios.put( `/api/appointments/${id}`, { interview })
-    .then(() => setState(prev => updatedState(prev, id, interview)));
+    .finally(() => setState(prev => updatedState(prev, id, interview)));
   };
 
   const cancelInterview = (id) => {
