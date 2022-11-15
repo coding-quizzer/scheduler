@@ -57,7 +57,7 @@ const Appointment = (props) => {
           onDelete={() => transition("CONFIRM")}
         />
         )}
-      {mode === CREATE && <Form interviewers={interviewers} onCancel={back} onSave={save}/>}
+      {mode === CREATE && <Form student ={ interview?.student || "" } interviewers={interviewers} interviewer={interview?.interviewer.id || null} onCancel={back} onSave={save}/>}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={back} />}
