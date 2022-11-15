@@ -57,13 +57,13 @@ const Appointment = (props) => {
           onDelete={() => transition("CONFIRM")}
         />
         )}
-      {mode === CREATE && <Form interviewers={interviewers} onCancel={() => back()} onSave={save}/>}
+      {mode === CREATE && <Form interviewers={interviewers} onCancel={back} onSave={save}/>}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
-      {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={() => back()} />}
-      {mode === EDIT && <Form student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id} onCancel={() => back()} onSave={save}/>}
-      {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={() => back()}/>}
-      {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={() => back()} />}
+      {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={back} />}
+      {mode === EDIT && <Form student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id} onCancel={back} onSave={save}/>}
+      {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={back}/>}
+      {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={back} />}
     </article>
   );
 };
