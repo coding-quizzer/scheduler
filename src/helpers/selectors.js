@@ -10,7 +10,8 @@
  *  id,
  *  name,
  *  appointments,
- *  interviewers
+ *  interviewers,
+ *  spots,
  * }} the object for the current day
  */
 export function getDayObj (state, day) {
@@ -99,15 +100,15 @@ export function getInterviewersForDay(state, day) {
 };
 
 /**
- * 
+ * Get the total spots remaining for the given day
  * @param {{
  *  days,
  *  appointments,
  *  interviewers
  * }} state the current state object
- * @param {string} day the name of the current day
+ * @param {string} day the name of the given day
  * @returns {number} the number of appointments
- *                   available for the current day
+ *                   available for the given day
  */
 export function getSpotsForDay(state, day) {
   return getAppointmentsForDay(state, day)
