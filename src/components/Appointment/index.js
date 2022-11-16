@@ -72,7 +72,7 @@ const Appointment = (props) => {
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm message="Are you sure you want to delete?" onConfirm={cancel} onCancel={back} />}
-      {mode === EDIT && <Form interviewers={interviewers} onCancel={back} onSave={save} interviewer={interviewer} setInterviewer={setInterviewer} student={student} setStudent={setStudent} />}
+      {mode === EDIT && <Form interviewers={interviewers} onCancel={back} onSave={save} interviewer={interviewer || interview?.interviewer.id} setInterviewer={setInterviewer} student={student || interview?.student} setStudent={setStudent} />}
       {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={back}/>}
       {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={back} />}
     </article>
